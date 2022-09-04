@@ -4,43 +4,44 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-
-import java.util.ArrayList;
+import org.bukkit.potion.PotionEffectType;
 import java.util.List;
 
 public class RegenerationRunnable {
 
     private final RegenRegion main;
+    private static List<Region> listRegion;
 
-    private boolean enabled = true;
-    private List<Region> listRegion = new ArrayList<>();
-
-    public RegenerationRunnable(RegenRegion main){
+    public RegenerationRunnable(RegenRegion main, Boolean executeRunnable){
         this.main = main;
         listRegion = main.getRegionManager().getRegionList("regeneration");
+        if(executeRunnable){ run(); }
 
-        if(listRegion.isEmpty()){
-            enabled = false;
-            return;
-        }
+
+    }
+
+    public void run(){
 
         Bukkit.getScheduler().runTaskTimer(main, () -> {
-            System.out.println("runnable working!");
+
             for(Player player : Bukkit.getOnlinePlayers()){
 
-                player.sendMessage(ChatColor.LIGHT_PURPLE + "hi this is working!");
                 for(Region tempRegion : listRegion){
                     if(tempRegion.getCuboid().contains(player.getLocation())){
-                        player.sendMessage(ChatColor.GOLD + "You are in the AREA!!");
+                        player.sendMessage(ChatColor.GOLD + "Received regeneration effect!");
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1, 1));
                     }
                 }
 
             }
-        }, 0, 100);
+        }, 0, 20);
+
 
     }
 
-    public boolean isEnabled(){ return enabled; }
+    public void updateListRegion(){
+        listRegion = main.getRegionManager().getRegionList("regeneration");
+    }
 
 
 }

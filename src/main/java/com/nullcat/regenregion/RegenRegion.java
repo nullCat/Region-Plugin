@@ -26,7 +26,7 @@ public final class RegenRegion extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
         regionManager = new RegionManager(this);
         mineralRunnable = new MineralRunnable(this,true);
-        //regionRunnable = new RegenerationRunnable(this);
+        regionRunnable = new RegenerationRunnable(this, true);
 
 
     }

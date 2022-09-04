@@ -70,15 +70,5 @@ public class RegionManager {
 
     }
 
-    public boolean nullChecker(String type){
-        switch(type.toLowerCase()){
-            case "regeneration":
-                return main.getRegenerationRunnable().isEnabled();
-
-            default:
-                return false;
-        }
-    }
-
 
 }

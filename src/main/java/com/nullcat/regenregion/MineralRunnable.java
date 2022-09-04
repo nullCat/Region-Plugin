@@ -78,6 +78,36 @@ public class MineralRunnable {
                         }
 
                     }
+                } else if(i % 16 == 0){ //gold: each 16 iterations / seconds
+
+                    for(Player player : Bukkit.getOnlinePlayers()){
+                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Gold has been refilled!");
+                    }
+                    for(Region tempRegion : listRegion){
+
+                        System.out.println("Gold list length: " + tempRegion.getGoldList().size());
+                        //each region has a list of the specified mineral that we want to spawn.
+                        for(BlockData blockData : tempRegion.getGoldList()){
+                            actualBlock = blockData.getBlock();
+                            spawnBlock(blockData);
+                        }
+
+                    }
+                } else if(i % 23 == 0){ //diamond: each 23 iterations / seconds
+
+                    for(Player player : Bukkit.getOnlinePlayers()){
+                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Diamond has been refilled!");
+                    }
+                    for(Region tempRegion : listRegion){
+
+                        System.out.println("Diamond list length: " + tempRegion.getDiamondList().size());
+                        //each region has a list of the specified mineral that we want to spawn.
+                        for(BlockData blockData : tempRegion.getDiamondList()){
+                            actualBlock = blockData.getBlock();
+                            spawnBlock(blockData);
+                        }
+
+                    }
                 }
             }
 

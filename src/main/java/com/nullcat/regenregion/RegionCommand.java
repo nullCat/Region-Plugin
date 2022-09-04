@@ -59,6 +59,8 @@ public class RegionCommand implements CommandExecutor {
                             MineralRunnable mineralRunnable = new MineralRunnable(main, false); //update region list from runnable class
                                                                                                                 // without executing another runnable
                             mineralRunnable.updateListRegion(); //this will update the static private list
+                            RegenerationRunnable regenerationRunnable = new RegenerationRunnable(main, false);
+                            regenerationRunnable.updateListRegion();
 
                             //success!
                             player.sendMessage(ChatColor.YELLOW + "the region " + tempRegion.getName() + " has been successfully created!");
