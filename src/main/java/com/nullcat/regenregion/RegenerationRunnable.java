@@ -40,7 +40,7 @@ public class RegenerationRunnable {
     }
 
     public void updateListRegion(){
-        listRegion = main.getRegionManager().getRegionList("regeneration");
+        listRegion = main.getRegionManager().getRegionList("regeneration"); //update the list
     }
 
 
