@@ -1,0 +1,9 @@
+name: RegenRegion
+version: '${project.version}'
+main: com.nullcat.regenregion.RegenRegion
+api-version: 1.16
+commands:
+  region:
+    description: manipulate a region!
+  pos:
+    description: define a position!
