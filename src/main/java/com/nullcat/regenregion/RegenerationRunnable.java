@@ -28,8 +28,11 @@ public class RegenerationRunnable {
 
                 for(Region tempRegion : listRegion){
                     if(tempRegion.getCuboid().contains(player.getLocation())){
-                        player.sendMessage(ChatColor.GOLD + "Received regeneration effect!");
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1, 1));
+                        if(!player.hasPotionEffect(PotionEffectType.REGENERATION) && player.getHealth() < 20.0){
+                            player.sendMessage(ChatColor.GOLD + "Received regeneration effect!");
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 2, true ,true ,false));
+                        }
+
                     }
                 }
 
